@@ -178,7 +178,7 @@ export default class dbHelper {
     })
   }
 
-  async get(array) {
+  async get() {
     let db = await this.getDb()
 
     return new Promise((resolve) => {
@@ -186,12 +186,11 @@ export default class dbHelper {
         let trans = db.transaction([this.STORE_NAME], 'readonly')
 
         let store = trans.objectStore([this.STORE_NAME])
-
-        const resp = store.get(array)
+        const resp = store.get([100000  , 'sku'])
 
         resp.onsuccess = (event) => {
           //console.log("success");
-          console.log({status: true, data: event.target.result})
+          console.log({ status: true, data: event.target.result })
           resolve({ status: true, data: event.target.result })
         }
         resp.onerror = (event) => {

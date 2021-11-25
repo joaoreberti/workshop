@@ -5,28 +5,33 @@
     <div>
       <input v-model="$root.newRecords" />
       <button @click="$root.insert_N_records">
-        creat {{$root.newRecords}} new records
+        creat {{ $root.newRecords }} new records
       </button>
     </div>
     <QueryComponent></QueryComponent>
     <SyncComponent></SyncComponent>
     <ScanComponent></ScanComponent>
-    <ListComponent></ListComponent>
+    <!-- <ListComponent></ListComponent> -->
   </div>
 </template>
 
 <script>
 import ScanComponent from './components/ScanComponent'
-import ListComponent from './components/ListComponent'
+//import ListComponent from './components/ListComponent'
 import SyncComponent from './components/SyncComponent'
-import QueryComponent from "./components/QueryComponent"
+import QueryComponent from './components/QueryComponent'
 export default {
   name: 'App',
   components: {
     ScanComponent,
-    ListComponent,
+    // ListComponent,
     SyncComponent,
     QueryComponent
+  },
+  async created() {
+    console.time('get')
+    await this.$dbHelper.get()
+    console.timeEnd('get')
   },
   methods: {
     async clearIdb() {
