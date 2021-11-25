@@ -14,9 +14,6 @@ export default class Factories {
         url: imageBase64
       })
     }
-
     return await dbHelperInstance.saveArrayOfInputs(arrayToSave)
   }
 }
-
-

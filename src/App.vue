@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-   <!--  <button @click="clearIdb">Clear indexedDB</button>
+    <!--  <button @click="clearIdb">Clear indexedDB</button>
     <button @click="clearSyncedInputs">Clear synced</button> -->
     <!-- <div>
       <input v-model="$root.newRecords" />
@@ -8,9 +8,11 @@
         creat {{$root.newRecords}} new records
       </button>
     </div> -->
-   <!--  <SyncComponent></SyncComponent> -->
+    <!-- <QueryComponent></QueryComponent> -->
+
+    <!--  <SyncComponent></SyncComponent> -->
     <ScanComponent></ScanComponent>
-   <!--  <ListComponent></ListComponent> -->
+    <!--  <ListComponent></ListComponent> -->
   </div>
 </template>
 
@@ -18,12 +20,16 @@
 import ScanComponent from './components/ScanComponent'
 //import ListComponent from './components/ListComponent'
 //import SyncComponent from './components/SyncComponent'
+//import QueryComponent from "./components/QueryComponent",
+
 export default {
   name: 'App',
   components: {
     ScanComponent,
     // ListComponent,
-    // SyncComponent
+    // SyncComponent,
+    // QueryComponent
+
   },
   methods: {
     async clearIdb() {

@@ -19,7 +19,9 @@ new Vue({
     return {
       latestInputAdded: null,
       synced: null,
-      newRecords: 0
+      newRecords: 0,
+      queriedRecord: null
+
     }
   },
   methods: {
