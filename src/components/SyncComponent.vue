@@ -19,7 +19,7 @@ import CloudCheckIcon from "vue-material-design-icons/CloudCheck.vue";
 export default {
   watch: {
     "$root.synced": function (newValue) {
-      console.log("newValue sync", newValue);
+     //console.log("newValue sync", newValue);
     },
   },
   components: {
@@ -30,7 +30,7 @@ export default {
   methods: {
     tryAndSync() {
       this.$root.syncItems();
-      console.log("try and sync");
+     //console.log("try and sync");
     },
   },
 };
