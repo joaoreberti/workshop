@@ -8,6 +8,7 @@
         creat {{$root.newRecords}} new records
       </button>
     </div>
+    <QueryComponent></QueryComponent>
     <SyncComponent></SyncComponent>
     <ScanComponent></ScanComponent>
     <ListComponent></ListComponent>
@@ -18,12 +19,14 @@
 import ScanComponent from './components/ScanComponent'
 import ListComponent from './components/ListComponent'
 import SyncComponent from './components/SyncComponent'
+import QueryComponent from "./components/QueryComponent"
 export default {
   name: 'App',
   components: {
     ScanComponent,
     ListComponent,
-    SyncComponent
+    SyncComponent,
+    QueryComponent
   },
   methods: {
     async clearIdb() {

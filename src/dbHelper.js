@@ -13,7 +13,7 @@ export default class dbHelper {
 
       let request = window.indexedDB.open(this.DB_NAME, this.DB_VERSION)
 
-      request.onerror = (e) => {
+      request.onerror = () => {
         reject('Error')
       }
 
@@ -46,7 +46,7 @@ export default class dbHelper {
           resolve({ status: true, data: event.target.result })
         }
         resp.onerror = (event) => {
-         //console.log('error')
+          //console.log('error')
           resolve({ status: false, data: event.target.error })
         }
       } catch (e) {
@@ -107,7 +107,7 @@ export default class dbHelper {
           resolve({ status: true, data: event.target.result })
         }
         resp.onerror = (event) => {
-         //console.log('error')
+          //console.log('error')
           resolve({ status: false, data: event.target.error })
         }
       } catch (e) {
@@ -133,7 +133,7 @@ export default class dbHelper {
           resolve({ status: true, data: event.target.result })
         }
         resp.onerror = (event) => {
-         //console.log('error')
+          //console.log('error')
           resolve({ status: false, data: event.target.error })
         }
       } catch (e) {
@@ -173,6 +173,33 @@ export default class dbHelper {
         }; */
       } catch (e) {
         console.error('IDB EXCEPTION @ saveInput', e.name)
+        resolve({ status: false, exception: e.name })
+      }
+    })
+  }
+
+  async get(array) {
+    let db = await this.getDb()
+
+    return new Promise((resolve) => {
+      try {
+        let trans = db.transaction([this.STORE_NAME], 'readonly')
+
+        let store = trans.objectStore([this.STORE_NAME])
+
+        const resp = store.get(array)
+
+        resp.onsuccess = (event) => {
+          //console.log("success");
+          console.log({status: true, data: event.target.result})
+          resolve({ status: true, data: event.target.result })
+        }
+        resp.onerror = (event) => {
+          //console.log('error')
+          resolve({ status: false, data: event.target.error })
+        }
+      } catch (e) {
+        console.error('IDB EXCEPTION @ getSavedInputs', e.name)
         resolve({ status: false, exception: e.name })
       }
     })
